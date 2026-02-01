@@ -53,19 +53,37 @@ img {
   width: 250px;
   border-radius: 10px;
 }
+  .heart {
+  position: fixed;
+  bottom: -10px;
+  font-size: 20px;
+  animation: floatUp 6s linear infinite;
+  opacity: 0.7;
+}
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(-110vh) scale(1.5);
+    opacity: 0;
+  }
+}
 </style>
 </head>
 
 <body>
 
 <div class="box">
-  <h1>Shreya, will you be my Valentine? ❤️</h1>
+  <h1>Shreya, will you be my Valentine? </h1>
   <button id="yes">Yes</button>
   <button id="no">No</button>
 
   <div id="gif">
-    <h2>You had no choice 😂💖</h2>
-    <img src="https://media.giphy.com/media/IOMYt5jPR6QX5pnqM/giphy.gif">
+    <h2>You had no choice 🤓</h2>
+ <img src="https://media.tenor.com/8p0kE0Y0n7YAAAAC/love-you.gif">
   </div>
 </div>
 
@@ -89,6 +107,19 @@ yesButton.addEventListener("click", () => {
   noButton.style.display = "none";
 });
 </script>
+<script>
+function createHeart() {
+  const heart = document.createElement("div");
+  heart.className = "heart";
+  heart.innerHTML = "❤️";
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.fontSize = (16 + Math.random() * 20) + "px";
+  document.body.appendChild(heart);
 
+  setTimeout(() => heart.remove(), 6000);
+}
+
+setInterval(createHeart, 500);
+</script>
 </body>
 </html>
